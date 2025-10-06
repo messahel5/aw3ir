@@ -1,41 +1,58 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>TP1</title>
-  <meta name="description" content="" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <!-- Place favicon.ico in the root directory -->
-
-  <style>
-    body {
-      background-color: #e9ebee;
-      font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-      font-size: 16px;
-      margin: 0 auto;
-      max-width: 800px;
-    }
-  </style>
-
-  <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-  <!--<link rel="stylesheet" href="style.css">-->
-  <!--<script src="main.js"></script>-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV DevOps — Lotfi Mesahhil</title>
+  <link rel="stylesheet" href="cv.css">
 </head>
-
 <body>
-  <nav>
-    <a href="..">🏠 Index</a> / TP1
-  </nav>
-  <h1>TP 1</h1>
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
-  <img src="../galilee.png" alt="Logo Galilee" />
 
-  <h2><a href="experiences/index.html">Expériences</a></h2>
+<div class="cv-wrapper">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <img src="cv_photo_exemple_1.jpg" alt="Photo de Lotfi Messahel">
+
+    <h2>Lotfi Mesahhil</h2>
+    <p class="subtitle">Master Réseaux & Image | Développeur DevOps</p>
+
+    <h3>Contact</h3>
+    <ul>
+      <li>Email : lotfimessahel8@.com</li>
+      <li>Téléphone : +33 780 82 46 86</li>
+      <li>Paris, France</li>
+    </ul>
+
+    <h3>Compétences</h3>
+    <ul class="skills">
+      <li>Docker & Kubernetes</li>
+      <li>AWS / Cloud</li>
+      <li>CI/CD & Terraform</li>
+      <li>Linux / Bash</li>
+      <li>Node.js / Web</li>
+    </ul>
+  </aside>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="content">
+    <section class="cv-section">
+      <h2>Profil</h2>
+      <p>
+        Passionné par le DevOps, le cloud et les réseaux, je conçois et déploie des applications sécurisées et automatisées.
+        Je maîtrise le déploiement sur AWS, la containerisation avec Docker & Kubernetes et les pipelines CI/CD.
+      </p>
+    </section>
+
+    <section class="cv-section">
+      <h2><a href="formations.html">Formations</a></h2>
+      <p>Découvrez mon parcours scolaire et universitaire.</p>
+    </section>
+
+    <section class="cv-section">
+      <h2><a href="experiences.html">Expériences</a></h2>
+      <p>Consultez mes projets et expériences professionnelles dans le domaine DevOps et Réseaux.</p>
+    </section>
+  </main>
+</div>
 </body>
-
 </html>

@@ -1,28 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expériences</title>
-
-    <style>
-      body {
-        background-color: #e9ebee;
-        font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-        font-size: 16px;
-        margin: 0 auto;
-        max-width: 800px;
-      }
-    </style>
+    <title>Expériences — Lotfi Messahel</title>
+    <link rel="stylesheet" href="../cv.css" />
   </head>
-  <body>
-    <h1>Expériences</h1>
 
-    <p>blabla</p>
-    Outils utilisés :
-    <ul>
-      <li>Github</li>
-      <li>VSCODE</li>
-    </ul>
+  <body>
+    <nav>
+      <a href="../index.html">🏠 Accueil</a> / Expériences
+    </nav>
+
+    <header class="exp-header">
+      <h1>Expériences DevOps et Réseaux</h1>
+      <p>Voici une sélection de mes projets et expériences les plus significatives dans le domaine du DevOps, du Cloud et des Réseaux.</p>
+    </header>
+
+    <main class="exp-container">
+      <section class="exp-card">
+        <h2>Projet Académique — Déploiement CI/CD sur AWS</h2>
+        <p class="year">2025</p>
+        <p>
+          Mise en place d’une pipeline CI/CD avec <strong>GitHub Actions</strong> et <strong>Terraform</strong> pour
+          déployer automatiquement une application web sur <strong>AWS EC2</strong>.  
+          Configuration du monitoring via <strong>CloudWatch</strong> et gestion de la sécurité via IAM.
+        </p>
+      </section>
+
+      <section class="exp-card">
+        <h2>Projet Kubernetes — Orchestration de Microservices</h2>
+        <p class="year">2024</p>
+        <p>
+          Création et déploiement d’un cluster <strong>Kubernetes</strong> sur Minikube.  
+          Écriture de manifests YAML (Pods, Services, Ingress) et automatisation des déploiements avec <strong>Helm</strong>.
+        </p>
+      </section>
+
+      <section class="exp-card">
+        <h2>Projet Docker — Application Multi-Conteneurs</h2>
+        <p class="year">2024</p>
+        <p>
+          Containerisation d’une application web <strong>Node.js</strong> et base de données <strong>MongoDB</strong>.  
+          Mise en place d’un fichier <strong>Docker Compose</strong> pour gérer les services et réseaux.
+        </p>
+      </section>
+
+      <section class="exp-card">
+        <h2>Projet Réseaux — Tunnel IPSec et Routage Sécurisé</h2>
+        <p class="year">2023</p>
+        <p>
+          Configuration d’un tunnel VPN <strong>IPSec</strong> entre deux routeurs pour sécuriser les échanges intersites.  
+          Simulation et test du réseau sous <strong>Cisco Packet Tracer</strong>.
+        </p>
+      </section>
+
+      <section class="exp-card">
+        <h2>Projet Mobile — Application de Livraison “Fel7in”</h2>
+        <p class="year">2024 – 2025</p>
+        <p>
+          Développement d’une application mobile complète pour la gestion de livraisons de tacos.  
+          Intégration <strong>Firebase</strong>, géolocalisation, interface livreur et tableau de bord administrateur.
+        </p>
+      </section>
+    </main>
+
+    <footer class="tools">
+      <h3>🛠️ Outils et technologies utilisées</h3>
+      <ul>
+        <li>Docker & Kubernetes</li>
+        <li>AWS (EC2, CloudWatch, IAM)</li>
+        <li>GitHub Actions & Terraform</li>
+        <li>Linux & Bash</li>
+        <li>Cisco Packet Tracer</li>
+        <li>Firebase</li>
+      </ul>
+    </footer>
   </body>
 </html>
