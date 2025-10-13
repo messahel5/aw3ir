@@ -1,0 +1,132 @@
+/* Style global */
+body {
+    background-color: #f2f4f7;
+    font-family: "Segoe UI", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 40px;
+    margin: 0;
+  }
+  
+  /* Conteneur principal */
+  .container {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Titre */
+  h1 {
+    color: #0d6efd;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+  
+  /* Champs de formulaire */
+  form {
+    text-align: left;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+  
+  /* Validation visuelle */
+  input:invalid {
+    border: 2px solid #dc3545;
+    background-color: #ffeaea;
+  }
+  input:valid {
+    border: 2px solid #198754;
+    background-color: #e9ffe9;
+  }
+  
+  /* ✔ Icone */
+  .icon-ok {
+    position: absolute;
+    right: 10px;
+    top: 37px;
+    color: #198754;
+    font-size: 1.2rem;
+    display: none;
+  }
+  
+  input:valid + .icon-ok {
+    display: inline-block;
+  }
+  
+  /* Bouton principal */
+  .btn-primary {
+    width: 100%;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0b5ed7;
+  }
+  /* Page de résultat */
+.result-box {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 30px 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: left;
+    line-height: 1.6;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  /* Bouton de retour */
+  .btn-return {
+    display: inline-block;
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-return:hover {
+    background-color: #0b5ed7;
+  }
+  
