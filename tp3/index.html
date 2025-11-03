@@ -1,39 +1,426 @@
-<!doctype html>
-<html>
+<<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>TP3 - Formulaire Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>TP3</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+    <!-- CSS Bootstrap local -->
+    <link rel="stylesheet" href="css/bootstrap.css" />
 
     <style>
-        body {
-            background-color: #e9ebee;
-            font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-            font-size: 16px;
-            margin: 0 auto;
-            max-width: 800px;
-        }
+      body {
+        background-color: #e9ebee;
+        font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco",
+          "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+        font-size: 16px;
+        margin: 0 auto;
+        max-width: 900px;
+      }
     </style>
 
-    <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-    <!--<link rel="stylesheet" href="style.css">-->
-    <!--<script src="main.js"></script>-->
-</head>
+    <!-- JS Bootstrap local (nécessaire pour la modal) -->
+    <script src="js/bootstrap.bundle.js"></script>
+  </head>
 
-<body>
-    <nav>
-        <a href="..">🏠 Index</a> / TP3
+  <body>
+    <nav class="mt-3">
+      <a href="..">🏠 Index</a> / TP3
     </nav>
-    <h1>tp3</h1>
-    <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-    <img src="../galilee.png" alt="Logo Galilee" />
-</body>
 
+    <div class="container mt-4 mb-5">
+      <h1 class="text-center mb-4">TP3 — Formulaire Bootstrap + Validation</h1>
+
+      <!-- Formulaire en "horizontal form" -->
+      <form id="form" class="needs-validation" novalidate>
+        <div class="row mb-3">
+          <label for="lastname" class="col-sm-3 col-form-label">Nom</label>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              id="lastname"
+              required
+              minlength="5"
+              placeholder="Dupont"
+            />
+            <div class="invalid-feedback">
+              Le nom doit contenir au moins 5 caractères.
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="firstname" class="col-sm-3 col-form-label">Prénom</label>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              id="firstname"
+              required
+              minlength="5"
+              placeholder="Marie"
+            />
+            <div class="invalid-feedback">
+              Le prénom doit contenir au moins 5 caractères.
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="birthday" class="col-sm-3 col-form-label"
+            >Date de naissance</label
+          >
+          <div class="col-sm-9">
+            <input type="date" class="form-control" id="birthday" required />
+            <div class="invalid-feedback">
+              La date de naissance ne doit pas être dans le futur.
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="address" class="col-sm-3 col-form-label"
+            >Adresse postale</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              required
+              minlength="5"
+              placeholder="10 rue de Paris, 75000 Paris"
+            />
+            <div class="invalid-feedback">
+              L'adresse doit contenir au moins 5 caractères.
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <label for="email" class="col-sm-3 col-form-label"
+            >Adresse mail</label
+          >
+          <div class="col-sm-9">
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              required
+              placeholder="exemple@mail.com"
+            />
+            <div class="invalid-feedback">
+              Veuillez entrer une adresse mail valide.
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" id="submit" class="btn btn-primary">
+            Valider
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Modal Bootstrap -->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Résultat du formulaire
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-center">...</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script de validation -->
+    <script src="js/form-validation.js"></script>
+  </body>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      margin: 0 auto;
+      max-width: 900px;
+    }
+  
+    h1 {
+      font-weight: 600;
+      color: #0d6efd;
+    }
+  
+    nav {
+      background-color: #0d6efd;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 0 0 10px 10px;
+    }
+  
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  
+    nav a:hover {
+      text-decoration: underline;
+    }
+  
+    form {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+  
+    input.form-control {
+      border: 1px solid #ccc;
+      transition: all 0.3s ease;
+    }
+  
+    input.form-control:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 5px rgba(13, 110, 253, 0.4);
+    }
+  
+    button.btn-primary {
+      padding: 10px 30px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+  
+    button.btn-primary:hover {
+      background-color: #0b5ed7;
+      transform: scale(1.05);
+    }
+  
+    .modal-content {
+      border-radius: 15px;
+    }
+  
+    .modal-header {
+      background-color: #0d6efd;
+      color: white;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+  
+    .modal-footer {
+      background-color: #f8f9fa;
+    }
+  
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 40px;
+    }
+    /* Style de la modale Bootstrap */
+.modal-content {
+  border-radius: 18px;
+  border: none;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* En-tête colorée */
+.modal-header {
+  background: linear-gradient(135deg, #0d6efd, #0a58ca);
+  color: white;
+  padding: 15px 20px;
+  border-bottom: none;
+}
+
+.modal-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.modal-header .btn-close {
+  filter: invert(1);
+  opacity: 0.8;
+}
+.modal-header .btn-close:hover {
+  opacity: 1;
+}
+
+/* Corps centré */
+.modal-body {
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.modal-body img {
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Pied de la modale */
+.modal-footer {
+  background-color: #f8f9fa;
+  border-top: none;
+  padding: 15px;
+}
+
+/* Bouton OK stylé */
+.modal-footer .btn-primary {
+  background-color: #0d6efd;
+  border: none;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px 25px;
+  transition: all 0.3s ease;
+}
+.modal-footer .btn-primary:hover {
+  background-color: #0b5ed7;
+  transform: scale(1.05);
+}
+/* === MODALE ANIMÉE ET COLORÉE === */
+
+/* Animation d’apparition (zoom + fondu) */
+@keyframes zoomInFade {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Appliquer l’animation à la modale */
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+  transform: translate(0, -20px);
+}
+.modal.show .modal-dialog {
+  animation: zoomInFade 0.35s ease-out;
+}
+
+/* Conteneur général */
+.modal-content {
+  border-radius: 18px;
+  border: none;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* En-têtes colorées selon l’état */
+.modal-header.success {
+  background: linear-gradient(135deg, #0d6efd, #198754); /* bleu + vert */
+  color: white;
+}
+.modal-header.error {
+  background: linear-gradient(135deg, #dc3545, #b02a37); /* rouge */
+  color: white;
+}
+
+.modal-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.modal-header .btn-close {
+  filter: invert(1);
+  opacity: 0.8;
+}
+.modal-header .btn-close:hover {
+  opacity: 1;
+}
+
+.modal-body {
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.modal-body img {
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.modal-footer {
+  background-color: #f8f9fa;
+  border-top: none;
+  padding: 15px;
+}
+
+.modal-footer .btn-primary {
+  background-color: #0d6efd;
+  border: none;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px 25px;
+  transition: all 0.3s ease;
+}
+.modal-footer .btn-primary:hover {
+  background-color: #0b5ed7;
+  transform: scale(1.05);
+}
+.modal-content {
+  border-radius: 10px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header.success {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.modal-header.error {
+  background-color: #dc3545;
+  color: white;
+}
+
+.modal-body {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.modal-body img {
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.modal-footer {
+  background-color: #f8f9fa;
+  border-top: none;
+}
+
+  </style>
+  
 </html>
