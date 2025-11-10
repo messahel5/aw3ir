@@ -1,39 +1,166 @@
 <!doctype html>
-<html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>TP4 – Formulaire + Géoloc + Stockage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>TP4</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap local -->
+    <link rel="stylesheet" href="css/bootstrap.css" />
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+    <!-- Leaflet (pour la carte cliquable OpenStreetMap) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
 
     <style>
-        body {
-            background-color: #e9ebee;
-            font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-            font-size: 16px;
-            margin: 0 auto;
-            max-width: 800px;
-        }
+      body {
+        background-color: #e9ebee;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+
+      [data-count] {
+        font-size: 0.75rem;
+        color: #666;
+        text-align: right;
+      }
+
+      #map {
+        height: 300px;
+        background: #fff;
+        border: 1px solid #ccc;
+      }
     </style>
+  </head>
 
-    <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-    <!--<link rel="stylesheet" href="style.css">-->
-    <!--<script src="main.js"></script>-->
-</head>
-
-<body>
-    <nav>
-        <a href="..">🏠 Index</a> / TP4
+  <body>
+    <nav class="mb-3">
+      <a href="#">🏠 Index</a> / TP4
     </nav>
-    <h1>TP4</h1>
-    <!-- Add your site or application content here -->
-    <p>Hello world! This is HTML5 Boilerplate.</p>
-    <img src="../galilee.png" alt="Logo Galilee" />
-</body>
 
+    <h1 class="mb-4">TP4 – Formulaire avec HTML5, géolocalisation et stockage</h1>
+
+    <!-- FORMULAIRE -->
+    <form id="contactForm" class="needs-validation" novalidate>
+      <!-- Nom -->
+      <div class="row mb-3">
+        <div class="col-12 col-md-2">
+          <label for="name" class="form-label">Nom</label>
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            onkeyup="calcNbChar(this.id)"
+          />
+          <div class="invalid-feedback">Nom ≥ 5 caractères</div>
+        </div>
+        <div class="col-2 d-none d-md-block" data-count>0 car.</div>
+      </div>
+
+      <!-- Prénom -->
+      <div class="row mb-3">
+        <div class="col-12 col-md-2">
+          <label for="firstname" class="form-label">Prénom</label>
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            id="firstname"
+            required
+            onkeyup="calcNbChar(this.id)"
+          />
+          <div class="invalid-feedback">Prénom ≥ 5 caractères</div>
+        </div>
+        <div class="col-2 d-none d-md-block" data-count>0 car.</div>
+      </div>
+
+      <!-- Date de naissance -->
+      <div class="row mb-3">
+        <div class="col-12 col-md-2">
+          <label for="birth" class="form-label">Date</label>
+        </div>
+        <div class="col">
+          <input type="date" class="form-control" id="birth" required />
+          <div class="invalid-feedback">Date invalide</div>
+        </div>
+        <div class="col-2 d-none d-md-block"></div>
+      </div>
+
+      <!-- Adresse + bouton GPS -->
+      <div class="row mb-3 align-items-center">
+        <div class="col-12 col-md-2">
+          <label for="adresse" class="form-label">Adresse</label>
+        </div>
+        <div class="col">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="adresse"
+              required
+              onkeyup="calcNbChar(this.id)"
+            />
+            <button id="gps" type="button" class="btn btn-secondary">
+              📍
+            </button>
+          </div>
+          <div class="invalid-feedback">Adresse ≥ 5 caractères</div>
+        </div>
+        <div class="col-2 d-none d-md-block" data-count>0 car.</div>
+      </div>
+
+      <!-- Mail -->
+      <div class="row mb-3">
+        <div class="col-12 col-md-2">
+          <label for="mail" class="form-label">Mail</label>
+        </div>
+        <div class="col">
+          <input type="email" class="form-control" id="mail" required />
+          <div class="invalid-feedback">Mail invalide</div>
+        </div>
+        <div class="col-2 d-none d-md-block"></div>
+      </div>
+
+      <!-- Boutons -->
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <button id="reset" type="button" class="btn btn-secondary">
+          Reset
+        </button>
+      </div>
+    </form>
+
+    <!-- Carte (Leaflet va l'utiliser) -->
+    <div id="map" class="mb-4"></div>
+
+    <!-- Tableau des contacts -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Date</th>
+          <th>Adresse</th>
+          <th>Mail</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <!-- JS Bootstrap local -->
+    <script src="js/bootstrap.bundle.js"></script>
+
+    <!-- Leaflet JS (pour la carte interactive) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Ton script -->
+    <script src="js/form-validation.js"></script>
+  </body>
 </html>
