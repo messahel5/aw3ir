@@ -1,6 +1,6 @@
 // main.js
 
-// Clé API OpenWeatherMap fournie
+// Clé API OpenWeatherMap fournie ////////
 const API_KEY = "cb3ec9c1be3b82f8b8f080e96244e8d2";
 
 var app;
