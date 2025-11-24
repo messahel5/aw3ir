@@ -1,0 +1,43 @@
+<div class="card p-3 mb-3">
+    <form (ngSubmit)="onSubmit()" class="mb-2">
+      <div class="input-group">
+        <input
+          type="search"
+          placeholder="Ville ..."
+          id="name"
+          name="name"
+          class="form-control"
+          minlength="2"
+          required
+          [(ngModel)]="city.name"
+          #name="ngModel"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="submit" [disabled]="!name.valid">Go!</button>
+        </div>
+      </div>
+      <small *ngIf="city.name" class="text-muted">{{city.name.length}} caractères</small>
+  
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger mt-2">
+        <div *ngIf="name.errors?.['required']">La saisie de la ville est obligatoire</div>
+        <div *ngIf="name.errors?.['minlength']">Doit contenir au moins 2 caractères.</div>
+      </div>
+    </form>
+  
+    <hr />
+  
+    <h5>Liste des villes ({{cityList.length}})</h5>
+    <ul class="list-group">
+      <li *ngFor="let city of cityList" class="list-group-item d-flex justify-content-between align-items-center">
+        <a [routerLink]="['/meteo', city.name]" class="flex-grow-1">{{city.name}}</a>
+        <button (click)="remove(city)" class="btn btn-outline-secondary btn-sm">×</button>
+      </li>
+    </ul>
+    
+  
+    <div *ngIf="cityList.length === 0" class="alert alert-primary mt-3">Aucune ville de saisie!</div>
+  
+    <hr />
+    <pre>{{cityList | json}}</pre>
+  </div>
+  

@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import "leaflet/dist/leaflet.css";
+
+/* Styles globaux optionnels pour meilleure typo */
+body {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f5f7fb;
+  color: #222;
+}
+.container { padding-top: 18px; }

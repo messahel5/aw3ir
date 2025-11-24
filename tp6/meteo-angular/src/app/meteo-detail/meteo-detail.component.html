@@ -1,0 +1,57 @@
+<div *ngIf="meteo && meteo.cod == 200" class="meteo-card card p-3">
+    <nav aria-label="breadcrumb" class="mb-2">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a routerLink="/">🏠</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Météo pour {{meteo.name}}</li>
+      </ol>
+    </nav>
+  
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center">
+        <h2 class="city-title">{{meteo.name}}</h2>
+        <div class="time">{{ (meteo.dt*1000) | date:'EEEE d LLLL HH:mm' }}</div>
+  
+        <div class="d-flex justify-content-center align-items-center mt-3">
+          <img [src]="'https://openweathermap.org/img/wn/' + meteo.weather[0].icon + '@4x.png'" alt="icon" class="weather-icon">
+          <div class="ml-3 text-left">
+            <div class="temp">{{meteo.main.temp | number:'1.0-0'}}°C</div>
+            <div class="desc text-capitalize">{{meteo.weather[0].description}}</div>
+          </div>
+        </div>
+  
+        <ul class="list-unstyled mt-3 stats">
+          <li><strong>Nuages:</strong> {{meteo.clouds.all}}%</li>
+          <li><strong>Humidité:</strong> {{meteo.main.humidity}}%</li>
+          <li><strong>Vent:</strong> {{meteo.wind.speed}} m/s</li>
+          <li><strong>Lever:</strong> {{ formatTime(meteo.sys.sunrise) }}</li>
+          <li><strong>Couché:</strong> {{ formatTime(meteo.sys.sunset) }}</li>
+        </ul>
+      </div>
+  
+      <div class="col-md-6">
+        <div id="map" class="map-container mb-3"></div>
+  
+        <div *ngIf="forecast && forecast.list">
+          <h5>Météo sur 5 jours</h5>
+          <div class="d-flex overflow-auto forecast-row">
+            <div *ngFor="let f of dailyForecasts()" class="forecast-item card p-2 mr-2">
+              <div class="small">{{ (f.dt*1000) | date:'EEE d LLL' }}</div>
+              <img [src]="'https://openweathermap.org/img/wn/' + f.weather[0].icon + '@2x.png'">
+              <div class="mt-1"><strong>{{ f.main.temp | number:'1.0-0' }}°C</strong></div>
+              <div class="small text-capitalize">{{ f.weather[0].description }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <hr />
+    <pre class="json-debug">{{meteo | json}}</pre>
+  </div>
+  
+  <div *ngIf="meteo && meteo.cod != 200" class="alert alert-danger">
+    Erreur : {{meteo.message}} (code {{meteo.cod}})
+  </div>
+  
+  <div *ngIf="!meteo" class="alert alert-info">Chargement...</div>
+  

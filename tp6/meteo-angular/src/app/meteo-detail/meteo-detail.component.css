@@ -1,0 +1,47 @@
+.meteo-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(30,40,80,0.08);
+  }
+  
+  .city-title {
+    font-size: 1.6rem;
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  .time { color: #666; font-size: 0.9rem; }
+  
+  .weather-icon { width: 120px; height: auto; }
+  
+  .temp { font-size: 2.4rem; font-weight: 700; }
+  
+  .desc { color: #555; font-size: 1rem; }
+  
+  .stats li { margin-bottom: 6px; color: #333; }
+  
+  .map-container {
+    height: 280px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  
+  .forecast-row { padding-bottom: 6px; }
+  
+  .forecast-item {
+    min-width: 120px;
+    text-align: center;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(20,30,50,0.04);
+  }
+  
+  .json-debug {
+    max-height: 180px;
+    overflow: auto;
+    background: #f8f9fb;
+    padding: 8px;
+    border-radius: 6px;
+  }
+  
